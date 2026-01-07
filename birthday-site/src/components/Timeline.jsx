@@ -2,115 +2,96 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import { useRef } from "react";
 
 /* ============================
-   IMAGE IMPORTS (IMPORTANT)
-============================ */
-import img11 from "../assets/photos/11.jpg";
-import img12 from "../assets/photos/12.jpg";
-import img16 from "../assets/photos/16.jpg";
-import img14 from "../assets/photos/14.jpg";
-import img17 from "../assets/photos/17.jpg";
-import img15 from "../assets/photos/15.jpg";
-import img10 from "../assets/photos/10.jpg";
-import img18 from "../assets/photos/18.jpg";
-import img8 from "../assets/photos/8.jpg";
-import img5 from "../assets/photos/5.jpg";
-import img6 from "../assets/photos/6.jpg";
-import img4 from "../assets/photos/4.jpg";
-import img3 from "../assets/photos/3.jpg";
-
-/* ============================
    TIMELINE DATA
+   Note: For deployment, images in public/photos/ 
+   are referenced via absolute paths starting with "/"
 ============================ */
 const milestones = [
   {
     date: "Sept 2024",
     title: "Our first photo together ☕",
     description: "I knew from the first hello that you were special.",
-    image: img11,
+    image: "/photos/11.jpg",
   },
   {
     date: "Dec 2024",
     title: "Our First Date ❤️",
     description: "The night that changed everything for me.",
-    image: img12,
+    image: "/photos/12.jpg",
   },
   {
     date: "Dec 2024",
     title: "Lucknow Trip 🏞️",
     description: "Our first trip together, filled with laughter and adventure.",
-    image: img16,
+    image: "/photos/16.jpg",
   },
   {
     date: "Jan 2025",
     title: "My birthday 🎉",
     description: "We went to Curzon Bridge and had so much fun!",
-    image: img14,
+    image: "/photos/14.jpg",
   },
   {
     date: "Feb 2025",
     title: "Cuteeeeenesssss overloaded 😍",
     description: "A very cute photo of us together!",
-    image: img17,
+    image: "/photos/17.jpg",
   },
   {
     date: "Mar 2025",
     title: "Another date!!! 🥰",
     description: "Another day to cherish our moments together!",
-    image: img15,
+    image: "/photos/15.jpg",
   },
   {
     date: "May 2025",
     title: "Ashram Outing 🌳",
     description: "We went to Narayani Ashram behind the college!",
-    image: img10,
+    image: "/photos/10.jpg",
   },
   {
     date: "Oct 2025",
     title: "Chatt Pooja",
     description: "You looked like an angel in this one!",
-    image: img18,
+    image: "/photos/18.jpg",
   },
   {
     date: "Oct 2025",
     title: "Phone not working 404 📱",
     description: "We went to repair your phone haha",
-    image: img8,
+    image: "/photos/8.jpg",
   },
   {
     date: "Nov 2025",
     title: "Video Calling Norms",
     description: "When video calls were our lifeline!",
-    image: img5,
+    image: "/photos/5.jpg",
   },
   {
     date: "Dec 2025",
     title: "DATE NIGHT!! 🍝",
     description: "We reheated our pasta hehe!",
-    image: img6,
+    image: "/photos/6.jpg",
   },
   {
     date: "Nov 2024",
     title: "Navaratri Special 🥹",
     description: "We danced and had a great timeee!",
-    image: img4,
+    image: "/photos/4.jpg",
   },
   {
     date: "Oct 2024",
     title: "Diwali Fun 🎆",
     description: "Cutiee Patootiee!",
-    image: img3,
+    image: "/photos/3.jpg",
   },
 ];
 
-/* ============================
-   TIMELINE ITEM
-============================ */
 const TimelineItem = ({ milestone, index }) => {
   const isLeft = index % 2 === 0;
 
   return (
     <div className="grid grid-cols-[1fr_auto_1fr] gap-4 md:gap-10 items-center mb-24 last:mb-0">
-      {/* LEFT */}
       <div className="flex justify-end">
         {isLeft && (
           <motion.div
@@ -138,12 +119,10 @@ const TimelineItem = ({ milestone, index }) => {
         )}
       </div>
 
-      {/* CENTER DOT */}
-      <div className="flex justify-center">
+      <div className="flex justify-center relative">
         <div className="w-4 h-4 rounded-full bg-rose-400 border-4 border-white shadow-md z-20" />
       </div>
 
-      {/* RIGHT */}
       <div className="flex justify-start">
         {!isLeft && (
           <motion.div
@@ -174,9 +153,6 @@ const TimelineItem = ({ milestone, index }) => {
   );
 };
 
-/* ============================
-   MAIN TIMELINE
-============================ */
 const Timeline = () => {
   const containerRef = useRef(null);
 
